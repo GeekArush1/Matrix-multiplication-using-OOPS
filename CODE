@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+class Matrix{
+public:
+    int r1;
+    int c1;
+    int r2;
+    int c2;
+    void input_rows_and_columns(){
+        cout<<"Enter elements of row 1"<<endl;
+        cin>>r1;
+        cout<<"Enter elements of column 1"<<endl;
+        cin>>c1;
+        cout<<"Enter elements of row 2"<<endl;
+        cin>>r2;
+        cout<<"Enter elements of column 2"<<endl;
+        cin>>c2;
+    }
+    void input_multiply_and_display_matrix(int r1,int c1,int r2,int c2) {
+        int arr1[r1][c1];
+        int arr2[r2][c2];
+        if (c1 != r2) {
+            cout << "Matrix Multiplication not possible" << endl;
+        } else {
+            cout << "Input first matrix" << endl;
+            for (int i = 0; i < r1; i++) {
+                for (int j = 0; j < c1; j++) {
+                    cout<<"Enter element of "<<i<<" row and "<<j<<" column"<<endl;
+                    cin >> arr1[i][j];
+                }
+            }
+            cout << "Input second matrix" << endl;
+            for (int i = 0; i < r2; i++) {
+                for (int j = 0; j < c2; j++) {
+                    cout<<"Enter element of "<<i<<" row and "<<j<<" column"<<endl;
+                    cin >> arr2[i][j];
+                }
+            }
+        }
+        int c[r1][c2];
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c2; j++) {
+                c[i][j] = 0;
+                for (int k = 0; k < c1; k++) {
+                    c[i][j] += arr1[i][k] * arr2[k][j];
+                }
+            }
+        }
+        cout<<"Output matrix is"<<endl;
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c2; j++) {
+                cout << c[i][j];
+            }
+        }
+    }
+    };
+int main() {
+    Matrix obj1;
+    obj1.input_rows_and_columns();
+    obj1.input_multiply_and_display_matrix(obj1.r1,obj1.c1,obj1.r2,obj1.c2);
+    return 0;
+}
